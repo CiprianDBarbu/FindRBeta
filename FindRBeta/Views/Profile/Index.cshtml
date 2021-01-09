@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Profiles";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@foreach(var profile in ViewBag.Profiles)
+{
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @Html.Label("FirstName", "First name:")
+            <br />
+            <p>@profile.FirstName</p>
+
+            @Html.Label("LastName", "Last name:")
+            <br />
+            <p>@profile.LastName</p>
+
+            @Html.Label("Age", "Age:")
+            <br />
+            <p>@profile.Age</p>
+        </div>
+    </div>
+}

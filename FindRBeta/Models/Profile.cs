@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -13,57 +15,33 @@ namespace FindRBeta.Models
     }
     public class Profile
     {
-        public int Id { get; set; }
+        [Key, Column("ProfileId")]
+        public int ProfileId { get; set; }
 
-        private string lastName;
-
-        public string LastName
-        {
-            get { return lastName; }
-            set { lastName = value; }
-        }
-
-        private string firstName;
-
-        public string FirstName
-        {
-            get { return firstName; }
-            set { firstName = value; }
-        }
-
-        private int age;
-
-        public int Age
-        {
-            get { return age; }
-            set { age = value; }
-        }
-
-        private Gender sex;
-
-        public Gender Sex
-        {
-            get { return sex; }
-            set { sex = value; }
-        }
+        
+        [MaxLength(50, ErrorMessage="Last name cannot be more than 50!")]
+        public string LastName { get; set; }
 
 
-        private Location address;
+        [MaxLength(20, ErrorMessage = "Last name cannot be more than 20!")]
+        public string FirstName { get; set; }
+        
 
-        public Location Address
-        {
-            get { return address; }
-            set { address = value; }
-        }
+        public int Age { get; set; }
+        
 
-        private string details;
+        public Gender GenderType { get; set; }
+        
 
-        public string Details
-        {
-            get { return details; }
-            set { details = value; }
-        }
+        //one to many
+        public int LocationId { get; set; }
 
+        [ForeignKey("LocationId")]
+        public virtual Location Address { get; set; }
+        
+
+        public string Details { get; set; }
+        
 
 
 
