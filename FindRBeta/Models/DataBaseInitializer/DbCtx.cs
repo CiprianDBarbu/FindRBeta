@@ -107,11 +107,6 @@ namespace FindRBeta.Models.DataBaseInitializer
             context.Locations.Add(new Location { LocationId = 82, Country = "Romania", City = "Zalau", Placement = Zone.Periferial });
 
 
-
-
-
-
-
             Profile profile1 = new Profile { ProfileId = 1, FirstName = "Andrei", LastName = "Popescu", Age = 19, GenderType = Gender.Male, LocationId = 19 };
             Profile profile2 = new Profile { ProfileId = 2, FirstName = "Alexanda", LastName = "Ionescu", Age = 20, GenderType = Gender.Female, LocationId = 27 };
             Profile profile3 = new Profile { ProfileId = 3, FirstName = "Daniel", LastName = "Baltariu", Age = 19, GenderType = Gender.Male, LocationId = 28 };

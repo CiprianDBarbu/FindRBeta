@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Locations";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@foreach (var location in ViewBag.Locations)
+{
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @Html.Label("Country", "Country:")
+            <br />
+            <p>@location.Country</p>
+
+            @Html.Label("City", "City:")
+            <br />
+            <p>@location.City</p>
+
+            @Html.Label("Placement", "Placement:")
+            <br />
+            <p>@location.Placement</p>
+
+            @*@using (Html.BeginForm(actionName: "Details", controllerName: "Profile", method: FormMethod.Get, routeValues: new { id = profile.ProfileId }))
+            {
+                <button style="margin-right:5px; margin-left:5px" class="btn btn-primary col-lg-1" type="submit">More details</button>
+            }*@
+        </div>
+    </div>
+}
