@@ -44,17 +44,19 @@ namespace FindRBeta.Controllers
         public ActionResult New()
         {
             Profile profile = new Profile();
-
+            ViewBag.GenderList = GetAllGenderTypes();
             return View(profile);
         }
 
         [HttpPost]
         public ActionResult New(Profile profileRequest)
         {
+            ViewBag.GenderList = GetAllGenderTypes();
             try
             {
                 if(ModelState.IsValid)
                 {
+                    profileRequest.ProfileId = db.Profiles.Count()+1;
                     db.Profiles.Add(profileRequest);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -121,6 +123,33 @@ namespace FindRBeta.Controllers
                 return RedirectToAction("Index");
             }
             return HttpNotFound($"Couldn't find the user with id {id}!");
+        }
+
+
+        [NonAction]
+        public IEnumerable<SelectListItem> GetAllGenderTypes()
+        {
+            var selectList = new List<SelectListItem>();
+
+            selectList.Add(new SelectListItem
+            {
+                Value = Gender.Male.ToString(),
+                Text = "Male"
+            });
+
+            selectList.Add(new SelectListItem
+            {
+                Value = Gender.Female.ToString(),
+                Text = "Female"
+            });
+
+            selectList.Add(new SelectListItem
+            {
+                Value = Gender.Others.ToString(),
+                Text = "Others"
+            });
+
+            return selectList;
         }
 
     }

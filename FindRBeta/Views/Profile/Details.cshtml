@@ -1,0 +1,55 @@
+﻿@model FindRBeta.Models.Profile
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @Html.Label("LastName", "Last Name: ")
+        <br />
+        @Html.DisplayFor(p => p.LastName)
+        <br />
+        <br />
+
+        @Html.Label("FirstName", "First name:")
+        <br />
+        @Html.DisplayFor(p => p.FirstName)
+        <br />
+        <br />
+
+        @Html.Label("Age", "Age:")
+        <br />
+        @Html.DisplayFor(p => p.Age)
+        <br />
+        <br />
+
+        @Html.Label("GenderType", "Gender:")
+        <br />
+        @Html.DisplayFor(p => p.GenderType)
+        <br />
+        <br />
+
+        @Html.Label("Address", "Country:")
+        <br />
+        @Html.DisplayFor(p => p.Address.Country)
+        <br />
+        @Html.Label("Address", "City:")
+        <br />
+        @Html.DisplayFor(p => p.Address.City)
+        <br />
+        @Html.Label("Address", "Region:")
+        <br />
+        @Html.DisplayFor(p => p.Address.Placement)
+        <br />
+        <br />
+
+        @Html.Label("Details", "About:")
+        <br />
+        @Html.DisplayFor(p => p.Details)
+        <br />
+        <br />
+    </div>
+</div>
