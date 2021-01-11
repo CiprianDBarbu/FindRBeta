@@ -15,6 +15,8 @@ namespace FindRBeta.Models.DataBaseInitializer
 
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Location> Locations { get; set; }
+
+        public DbSet<Housing> Housings { get; set; }
     }
 
 
@@ -23,6 +25,7 @@ namespace FindRBeta.Models.DataBaseInitializer
         //initialzer - seed for Database
         protected override void Seed(DbCtx context)
         {
+            //Location SEED
             context.Locations.Add(new Location { LocationId = 1, Country = "Romania", City = "Alba-Iulia", Placement = Zone.Central});
             context.Locations.Add(new Location { LocationId = 2, Country = "Romania", City = "Alba-Iulia", Placement = Zone.Periferial });
             context.Locations.Add(new Location { LocationId = 3, Country = "Romania", City = "Alexandria", Placement = Zone.Central });
@@ -105,6 +108,28 @@ namespace FindRBeta.Models.DataBaseInitializer
             context.Locations.Add(new Location { LocationId = 80, Country = "Romania", City = "Vaslui", Placement = Zone.Periferial });
             context.Locations.Add(new Location { LocationId = 81, Country = "Romania", City = "Zalau", Placement = Zone.Central });
             context.Locations.Add(new Location { LocationId = 82, Country = "Romania", City = "Zalau", Placement = Zone.Periferial });
+
+
+
+
+            //Housing SEED
+            context.Housings.Add(new Housing { HousingId = 1, Link = "https://www.olx.ro/oferta/garsoniera-de-inchiriat-IDeq6lo.html#bb6f20793c;promoted", Price = 1100, NoOfRooms = 1, LocationId = 15 });
+            context.Housings.Add(new Housing { HousingId = 2, Link = "https://www.olx.ro/oferta/inchiriez-apartament-2-camere-studio-coresi-avantgarden-brasov-IDer4E6.html#c48a4bf265;promoted", Price = 1900, NoOfRooms = 2, LocationId = 16 });
+            context.Housings.Add(new Housing { HousingId = 3, Link = "https://www.olx.ro/oferta/chirie-apartament-3-camere-lujerului-IDenLrR.html#0ede99b094;promoted", Price = 1900, NoOfRooms = 3, LocationId = 19 });
+            context.Housings.Add(new Housing { HousingId = 4, Link = "https://www.olx.ro/oferta/chirie-apartament-3-camere-unirii-camera-de-comert-caut-coleg-IDeh0B5.html#0ede99b094;promoted", Price = 950, NoOfRooms = 3, LocationId = 19 });
+            context.Housings.Add(new Housing { HousingId = 5, Link = "https://www.olx.ro/oferta/garsoniera-chirie-IDdVUEb.html#0abeddb25a;promoted", Price = 900, NoOfRooms = 1, LocationId = 19 });
+            context.Housings.Add(new Housing { HousingId = 6, Link = "https://www.storia.ro/ro/oferta/urgent-gars-prima-chirie-in-residence-militari-1000lei-IDk6GY.html", Price = 1000, NoOfRooms = 1, LocationId = 19 });
+            context.Housings.Add(new Housing { HousingId = 7, Link = "https://www.olx.ro/oferta/garsoniera-chirie-IDerhis.html#0ede99b094", Price = 1000, NoOfRooms = 1, LocationId = 20 });
+            context.Housings.Add(new Housing { HousingId = 8, Link = "https://www.storia.ro/ro/oferta/apartament-2-camere-chirie-rond-pipera-penny-IDlJYz.html", Price = 2500, NoOfRooms = 2, LocationId = 20 });
+            context.Housings.Add(new Housing { HousingId = 9, Link = "https://www.storia.ro/ro/oferta/apartament-cu-4-camere-162-mp-3-terase-garaj-zona-strazii-buna-IDlyrS.html", Price = 4000, NoOfRooms = 4, LocationId = 25 });
+            context.Housings.Add(new Housing { HousingId = 10, Link = "https://www.olx.ro/oferta/inchiriez-apartament-2-camere-manastur-IDeq6Pn.html#2a0d862cf5;promoted", Price = 2000, NoOfRooms = 2, LocationId = 25 });
+            context.Housings.Add(new Housing { HousingId = 11, Link = "https://www.storia.ro/ro/oferta/apartament-2-camere-semidecomandat-gheorgheni-aleea-padis-IDkiYO.html", Price = 1500, NoOfRooms = 2, LocationId = 26 });
+            context.Housings.Add(new Housing { HousingId = 12, Link = "https://www.olx.ro/oferta/inchiriere-apartament-IDereOH.html#9d238f6d60;promoted", Price = 2400, NoOfRooms = 4, LocationId = 27 });
+            context.Housings.Add(new Housing { HousingId = 13, Link = "https://www.olx.ro/oferta/inchiriez-apartament-2-camere-la-casa-zona-centrala-promenada-mall-IDedZlj.html#93e8e400cc;promoted", Price = 1200, NoOfRooms = 2, LocationId = 61 });
+            context.Housings.Add(new Housing { HousingId = 14, Link = "https://www.olx.ro/oferta/chirie-fara-garantie-pe-termne-scurt-comisioane-0-IDdqorY.html#4e1af1f3e1;promoted", Price = 1000, NoOfRooms = 1, LocationId = 75 });
+            context.Housings.Add(new Housing { HousingId = 15, Link = "https://www.olx.ro/oferta/apartament-2-camere-linistit-langa-iulius-mall-IDdYaml.html#4e1af1f3e1;promoted", Price = 1600, NoOfRooms = 2, LocationId = 75 });
+            
+
 
 
             Profile profile1 = new Profile { ProfileId = 1, FirstName = "Andrei", LastName = "Popescu", Age = 19, GenderType = Gender.Male, LocationId = 19 };

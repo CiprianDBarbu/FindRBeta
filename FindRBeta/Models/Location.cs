@@ -20,7 +20,11 @@ namespace FindRBeta.Models
 
         public Zone Placement { get; set; }
 
+        //many to one
         public virtual ICollection<Profile> Profile { get; set; }
 
+
+        //many to one
+        public virtual ICollection<Housing> Housings { get; set; }
     }
 }

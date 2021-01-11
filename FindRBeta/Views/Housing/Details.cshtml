@@ -1,0 +1,57 @@
+﻿@model FindRBeta.Models.Housing
+
+@{
+    ViewBag.Title = "Housing details";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @Html.Label("Link", "Link-ul cazarii:")
+        <br />
+        @Html.DisplayFor(h => h.Link)
+        <br />
+        <br />
+
+        @Html.Label("Price", "Pret/luna (lei):")
+        <br />
+        @Html.DisplayFor(h => h.Price)
+        <br />
+        <br />
+
+        @Html.Label("NoOfRooms", "Numarul de camere:")
+        <br />
+        @Html.DisplayFor(h => h.NoOfRooms)
+        <br />
+        <br />
+
+        @Html.Label("HousingLocation", "Tara:")
+        <br />
+        @Html.DisplayFor(p => p.HousingLocation.Country)
+        <br />
+        @Html.Label("HousingLocation", "Oras:")
+        <br />
+        @Html.DisplayFor(p => p.HousingLocation.City)
+        <br />
+        @Html.Label("HousingLocation", "Zona:")
+        <br />
+        @Html.DisplayFor(p => p.HousingLocation.Placement)
+        <br />
+        <br />
+    </div>
+</div>
+
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Housing", method: FormMethod.Get, routeValues: new { id = Model.HousingId }))
+{
+    <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Update</button>
+}
+
+@using (Html.BeginForm(actionName: "Delete", controllerName: "Housing", method: FormMethod.Post, routeValues: new { id = Model.HousingId }))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button class="btn btn-primary col-lg-1" type="submit">Delete</button>
+}
+
+<br />

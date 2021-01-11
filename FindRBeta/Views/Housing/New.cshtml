@@ -1,0 +1,40 @@
+﻿@model FindRBeta.Models.Housing
+
+@{
+    ViewBag.Title = "New housing";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Housing", method: FormMethod.Post))
+{
+    @Html.Label("Link", "Link-ul cazarii:")
+    <br />
+    @Html.TextBoxFor(h => h.Link, null, new { placeholder = "Introduceti link-ul spre anuntul cazarii dorite.", @class = "form-control" })
+    @Html.ValidationMessageFor(h => h.Link, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("Price", "Pret/luna (lei):")
+    <br />
+    @Html.TextBoxFor(h => h.Price, null, new { placeholder = "Introduceti pretul cazarii. (Pretul este pe luna in LEI).", @class = "form-control" })
+    @Html.ValidationMessageFor(h => h.Price, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("NoOfRooms", "Numarul de camere:")
+    <br />
+    @Html.TextBoxFor(h => h.NoOfRooms, null, new { placeholder = "Introduceti numarul de camere al cazarii.", @class = "form-control" })
+    @Html.ValidationMessageFor(h => h.NoOfRooms, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("Location", "Locatia in care se afla cazarea:")
+    <br />
+    @Html.DropDownListFor(p => p.LocationId, new SelectList(Model.LocationsList, "Value", "Text"), "Alegeti zona cazarii", new { @class = "form-control" })
+    @Html.ValidationMessageFor(p => p.LocationId, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    <button class="btn btn-primary" type="submit">Create</button>
+}
