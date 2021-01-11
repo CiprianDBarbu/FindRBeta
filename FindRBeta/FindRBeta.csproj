@@ -263,6 +263,9 @@
     <Content Include="Views\Profile\New.cshtml" />
     <Content Include="Views\Location\Index.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
+    <Content Include="Views\Location\Details.cshtml" />
+    <Content Include="Views\Location\Edit.cshtml" />
+    <Content Include="Views\Location\New.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

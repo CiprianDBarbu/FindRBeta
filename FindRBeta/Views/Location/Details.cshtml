@@ -1,0 +1,39 @@
+﻿@model FindRBeta.Models.Location
+
+@{
+    ViewBag.Title = "Location Details";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="panel panel-default">
+    <div class="panel-body">
+        @Html.Label("Country", "Tara:")
+        <br />
+        @Html.DisplayFor(l => l.Country)
+        <br />
+        <br />
+
+        @Html.Label("City", "Oras:")
+        <br />
+        @Html.DisplayFor(l => l.City)
+        <br />
+        <br />
+
+        @Html.Label("Placement", "Pozitionare:")
+        <br />
+        @Html.DisplayFor(l => l.Placement)
+        <br />
+        <br />
+    </div>
+</div>
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Location", method: FormMethod.Get, routeValues: new { id = Model.LocationId }))
+{
+    <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Update</button>
+}
+
+@using (Html.BeginForm(actionName: "Delete", controllerName: "Location", method: FormMethod.Post, routeValues: new { id = Model.LocationId }))
+{
+    @Html.HttpMethodOverride(HttpVerbs.Delete)
+    <button class="btn btn-primary col-lg-1" type="submit">Delete</button>
+}

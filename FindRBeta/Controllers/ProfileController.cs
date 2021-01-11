@@ -58,7 +58,6 @@ namespace FindRBeta.Controllers
             {
                 if(ModelState.IsValid && profileRequest.ApplicationUserId == null)
                 {
-                    profileRequest.ProfileId = db.Profiles.Count()+1;
                     profileRequest.ApplicationUserId = User.Identity.GetUserId();
                     db.Profiles.Add(profileRequest);
                     db.SaveChanges();

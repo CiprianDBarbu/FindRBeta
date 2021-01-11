@@ -5,6 +5,10 @@
 
 <h2>@ViewBag.Title</h2>
 
+<br />
+@Html.ActionLink("Add location", "New")
+<br />
+
 @foreach (var location in ViewBag.Locations)
 {
     <div class="panel panel-default">

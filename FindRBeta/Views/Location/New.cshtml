@@ -1,0 +1,33 @@
+﻿@model FindRBeta.Models.Location
+
+@{
+    ViewBag.Title = "New location";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Location", method: FormMethod.Post))
+{
+    @Html.Label("Country", "Tara:")
+    <br />
+    @Html.TextBoxFor(l => l.Country, null, new { placeholder = "Introduceti numele tarii" })
+    @Html.ValidationMessageFor(l => l.Country, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("City", "Oras:")
+    <br />
+    @Html.TextBoxFor(l => l.City, null, new { placeholder = "Introduceti numele orasului" })
+    @Html.ValidationMessageFor(l => l.City, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    @Html.Label("Placement", "Pozitionare:")
+    <br />
+    @Html.EnumDropDownListFor(l => l.Placement, "Alege zona", new { @class = "form-control" })
+    @Html.ValidationMessageFor(p => p.Placement, "", new { @class = "text-danger" })
+    <br />
+    <br />
+
+    <button class="btn btn-primary" type="submit">Create</button>
+}
