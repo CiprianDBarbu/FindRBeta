@@ -20,11 +20,11 @@ namespace FindRBeta.Models
         public int ProfileId { get; set; }
 
         
-        [MaxLength(50, ErrorMessage="Last name cannot be more than 50!")]
+        [MaxLength(20, ErrorMessage="Numele nu poate avea mai mult de 20 de caractere!")]
         public string LastName { get; set; }
 
 
-        [MaxLength(20, ErrorMessage = "Last name cannot be more than 20!")]
+        [MaxLength(50, ErrorMessage = "Prenumele nu poate avea mai mult de 50 de caractere!")]
         public string FirstName { get; set; }
         
 
@@ -39,10 +39,16 @@ namespace FindRBeta.Models
 
         [ForeignKey("LocationId")]
         public virtual Location Address { get; set; }
-        
 
+        [MaxLength(1000, ErrorMessage = "Nu poti scrie mai mult de 1000 de caractere!")]
         public string Details { get; set; }
         
+        [NotMapped]
+        public IEnumerable<SelectListItem> LocationsList { get; set; }
 
+
+        //one-to-one
+        //[ForeignKey("ApplicationUser")]
+        public string ApplicationUserId { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using FindRBeta.Models;
 using FindRBeta.Models.DataBaseInitializer;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,20 +44,22 @@ namespace FindRBeta.Controllers
         [HttpGet]
         public ActionResult New()
         {
-            Profile profile = new Profile();
-            ViewBag.GenderList = GetAllGenderTypes();
+            Profile profile = new Profile 
+            {
+                LocationsList = GetAllLocations()
+            };
             return View(profile);
         }
 
         [HttpPost]
         public ActionResult New(Profile profileRequest)
         {
-            ViewBag.GenderList = GetAllGenderTypes();
             try
             {
-                if(ModelState.IsValid)
+                if(ModelState.IsValid && profileRequest.ApplicationUserId == null)
                 {
                     profileRequest.ProfileId = db.Profiles.Count()+1;
+                    profileRequest.ApplicationUserId = User.Identity.GetUserId();
                     db.Profiles.Add(profileRequest);
                     db.SaveChanges();
                     return RedirectToAction("Index");
@@ -80,6 +83,7 @@ namespace FindRBeta.Controllers
                 {
                     return HttpNotFound("User does not exist!");
                 }
+                profile.LocationsList = GetAllLocations();
                 return View(profile);
             }
             return HttpNotFound("Missing id parameter!");
@@ -90,6 +94,7 @@ namespace FindRBeta.Controllers
         {
             try
             {
+                profileRequest.LocationsList = GetAllLocations();
                 if(ModelState.IsValid)
                 {
                     Profile profile = db.Profiles.SingleOrDefault(p => p.ProfileId.Equals(id));
@@ -126,28 +131,45 @@ namespace FindRBeta.Controllers
         }
 
 
+        //[NonAction]
+        //public IEnumerable<SelectListItem> GetAllGenderTypes()
+        //{
+        //    var selectList = new List<SelectListItem>();
+
+        //    selectList.Add(new SelectListItem
+        //    {
+        //        Value = Gender.Male.ToString(),
+        //        Text = "Male"
+        //    });
+
+        //    selectList.Add(new SelectListItem
+        //    {
+        //        Value = Gender.Female.ToString(),
+        //        Text = "Female"
+        //    });
+
+        //    selectList.Add(new SelectListItem
+        //    {
+        //        Value = Gender.Others.ToString(),
+        //        Text = "Others"
+        //    });
+
+        //    return selectList;
+        //}
+
         [NonAction]
-        public IEnumerable<SelectListItem> GetAllGenderTypes()
+        public IEnumerable<SelectListItem> GetAllLocations()
         {
             var selectList = new List<SelectListItem>();
 
-            selectList.Add(new SelectListItem
+            foreach(var location in db.Locations.ToList())
             {
-                Value = Gender.Male.ToString(),
-                Text = "Male"
-            });
-
-            selectList.Add(new SelectListItem
-            {
-                Value = Gender.Female.ToString(),
-                Text = "Female"
-            });
-
-            selectList.Add(new SelectListItem
-            {
-                Value = Gender.Others.ToString(),
-                Text = "Others"
-            });
+                selectList.Add(new SelectListItem
+                {
+                    Value = location.LocationId.ToString(),
+                    Text = $"{location.Country}, {location.City}, {location.Placement}"
+                });
+            }
 
             return selectList;
         }

@@ -21,10 +21,10 @@
             <br />
             <p>@location.Placement</p>
 
-            @*@using (Html.BeginForm(actionName: "Details", controllerName: "Profile", method: FormMethod.Get, routeValues: new { id = profile.ProfileId }))
+            @using (Html.BeginForm(actionName: "Details", controllerName: "Location", method: FormMethod.Get, routeValues: new { id = location.LocationId }))
             {
                 <button style="margin-right:5px; margin-left:5px" class="btn btn-primary col-lg-1" type="submit">More details</button>
-            }*@
+            }
         </div>
     </div>
 }

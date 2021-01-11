@@ -1,7 +1,50 @@
 ﻿@model FindRBeta.Models.Profile
 
 @{
-    ViewBag.Title = "New Profile";
+    ViewBag.Title = "Profil nou";
 }
 
 <h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm(actionName: "New", controllerName: "Profile", method: FormMethod.Post))
+{
+    @Html.Label("FirstName", "Prenume:")
+    <br />
+    @Html.TextBoxFor(p => p.FirstName, null, new { placeholder = "Introduceti prenume." })
+    @Html.ValidationMessageFor(p => p.FirstName, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("LastName", "Nume:")
+    <br />
+    @Html.TextBoxFor(p => p.LastName, null, new { placeholder = "Introduceti nume." })
+    @Html.ValidationMessageFor(p => p.LastName, "", new { @class = "text-danger" })
+    <br />
+
+    @Html.Label("Age", "Varsta:")
+    <br />
+    @Html.TextBoxFor(p => p.Age, null, new { placeholder = "Introdueceti varsta." })
+    @Html.ValidationMessageFor(p => p.Age, "", new { @class = "text-danger" })
+    <br />
+
+
+    @Html.Label("Gender", "Gen:")
+    <br />
+    @Html.EnumDropDownListFor(p => p.GenderType, "Alege genul", new { @class = "form-control"})
+    @Html.ValidationMessageFor(p => p.GenderType, "", new { @class = "text-danger"})
+    <br />
+
+    @Html.Label("Location", "Locatia in care cautati cazare")
+    <br />
+    @Html.DropDownListFor(p => p.LocationId, new SelectList(Model.LocationsList, "Value" ,"Text"), "Alegeti zona de cautare", new { @class = "form-control"})
+    @Html.ValidationMessageFor(p => p.LocationId, "", new { @class = "text-danger"})
+    <br />
+
+    <br />
+    @Html.Label("Details", "Despre tine:")
+    @Html.TextArea("Details", null, new { placeholder = "Scrie detalii despre tine!", @class = "form-control"})
+    @Html.ValidationMessageFor(p => p.Details, "", new { @class = "text-danger"})
+    <br />
+    <br />
+
+    <button class="btn btn-primary" type="submit">Creeaza profil!</button>
+}

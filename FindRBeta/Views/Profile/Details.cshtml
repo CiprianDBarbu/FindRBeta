@@ -53,3 +53,8 @@
         <br />
     </div>
 </div>
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Profile", method: FormMethod.Get, routeValues: new { id = Model.ProfileId }))
+{
+    <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Update</button>
+}
