@@ -21,6 +21,7 @@ namespace FindRBeta.Models
         //one to one
         public virtual Housing Housing { get; set; }
 
+        [HousingValidator]
         [Required, RegularExpression(@"^[1-9](\d{3})$", ErrorMessage = "Acesta nu este un an valid!")]
         public int HousingYear { get; set; }
 

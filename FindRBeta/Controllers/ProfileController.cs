@@ -15,6 +15,7 @@ namespace FindRBeta.Controllers
 
         // GET: Profile
         [HttpGet]
+        [Authorize(Roles = "SuperUser, Admin, Editor")]
         public ActionResult Index()
         {
             List<Profile> profiles = db.Profiles.ToList();
@@ -24,6 +25,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Editor")]
         public ActionResult Index2()
         {
             var userName = User.Identity.GetUserName();
@@ -46,6 +48,7 @@ namespace FindRBeta.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "SuperUser, Admin, Editor")]
         public ActionResult Details(int? id)
         {
             if(id.HasValue)
@@ -61,6 +64,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Editor")]
         public ActionResult New()
         {
             Profile profile = new Profile 
@@ -71,6 +75,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Editor")]
         public ActionResult New(Profile profileRequest)
         {
             try
@@ -92,6 +97,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "SuperUser, Admin, Editor")]
         public ActionResult Edit(int? id)
         {
             if(id.HasValue)
@@ -109,6 +115,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "SuperUser, Admin, Editor")]
         public ActionResult Edit(int id, Profile profileRequest)
         {
             try
@@ -137,6 +144,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = "Admin, SuperUser")]
         public ActionResult Delete(int id)
         {
             Profile profile = db.Profiles.Find(id);

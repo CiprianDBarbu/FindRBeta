@@ -194,6 +194,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Ad.cs" />
     <Compile Include="Models\Housing.cs" />
+    <Compile Include="Models\HousingValidator.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -274,10 +275,12 @@
     <Content Include="Views\Housing\Edit.cshtml" />
     <Content Include="Views\Housing\New.cshtml" />
     <Content Include="Views\Profile\Index2.cshtml" />
+    <Content Include="Views\Ad\Index.cshtml" />
+    <Content Include="Views\Ad\Details.cshtml" />
+    <Content Include="Views\Ad\New.cshtml" />
+    <Content Include="Views\Ad\Edit.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Ad\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -45,9 +45,9 @@ namespace FindRBeta.Models
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
 
-            if (!roleManager.RoleExists("SuperUser"))
+            if (!roleManager.RoleExists("Editor"))
             {
-                roleManager.Create(new IdentityRole("SuperUser"));
+                roleManager.Create(new IdentityRole("Editor"));
             }
             var user1 = new ApplicationUser
             {
@@ -57,7 +57,7 @@ namespace FindRBeta.Models
             var userCreated1 = userManager.Create(user1, "Testtest1!");
             if (userCreated1.Succeeded)
             {
-                userManager.AddToRole(user1.Id, "SuperUser");
+                userManager.AddToRole(user1.Id, "Editor");
             }
 
 
@@ -70,7 +70,7 @@ namespace FindRBeta.Models
             var userCreated2 = userManager.Create(user2, "Testtest1!");
             if (userCreated2.Succeeded)
             {
-                userManager.AddToRole(user2.Id, "SuperUser");
+                userManager.AddToRole(user2.Id, "Editor");
             }
 
 
@@ -82,7 +82,7 @@ namespace FindRBeta.Models
             var userCreated3 = userManager.Create(user3, "Testtest1!");
             if (userCreated3.Succeeded)
             {
-                userManager.AddToRole(user3.Id, "SuperUser");
+                userManager.AddToRole(user3.Id, "Editor");
             }
 
 
@@ -96,7 +96,7 @@ namespace FindRBeta.Models
             var userCreated4 = userManager.Create(user4, "Testtest1!");
             if (userCreated4.Succeeded)
             {
-                userManager.AddToRole(user4.Id, "SuperUser");
+                userManager.AddToRole(user4.Id, "Editor");
             }
 
 
@@ -110,7 +110,7 @@ namespace FindRBeta.Models
             var userCreated5 = userManager.Create(user5, "Testtest1!");
             if (userCreated5.Succeeded)
             {
-                userManager.AddToRole(user5.Id, "SuperUser");
+                userManager.AddToRole(user5.Id, "Editor");
             }
 
 

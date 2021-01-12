@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Postari";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Numele
+        </th>
+        <th>
+            Link-ul anuntului
+        </th>
+        <th>
+            Anul cazarii
+        </th>
+        <th>
+            Luna cazarii
+        </th>
+        <th>
+            Ziua cazarii
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var ad in ViewBag.Ads) {
+<tr>
+    <td>
+        @ad.Profile.LastName
+    </td>
+    <td>
+        @ad.Housing.Link
+    </td>
+    <td>
+        @ad.HousingYear
+    </td>
+    <td>
+        @ad.HousingMonth
+    </td>
+    <td>
+        @ad.HousingDay
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "Edit", new { id = ad.AdId }) |
+        @Html.ActionLink("Details", "Details", new { id = ad.AdId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = ad.AdId })
+    </td>
+</tr>
+}
+
+</table>

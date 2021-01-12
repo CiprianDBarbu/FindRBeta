@@ -12,6 +12,7 @@ namespace FindRBeta.Controllers
 
         // GET: Ad
         [HttpGet]
+        [Authorize(Roles = "SuperUser, Admin, Editor")]
         public ActionResult Index()
         {
             List<Ad> ads = db.Ads.ToList();
@@ -21,6 +22,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "SuperUser, Admin, Editor")]
         public ActionResult Details(int? id)
         {
             if(id.HasValue)
@@ -36,6 +38,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Editor")]
         public ActionResult New()
         {
             Ad ad = new Ad();
@@ -44,6 +47,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Editor")]
         public ActionResult New(Ad adRequest)
         {
             try
@@ -63,6 +67,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "SuperUser, Admin, Editor")]
         public ActionResult Edit(int? id)
         {
             if(id.HasValue)
@@ -79,6 +84,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "SuperUser, Admin, Editor")]
         public ActionResult Edit(int id, Ad adRequest)
         {
             try
@@ -107,6 +113,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpDelete]
+        [Authorize(Roles = "Admin, SuperUser")]
         public ActionResult Delete(int id)
         {
             Ad ad = db.Ads.Find(id);
