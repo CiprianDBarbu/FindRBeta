@@ -50,5 +50,10 @@ namespace FindRBeta.Models
         //one-to-one
         //[ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }
+        public string AplicationUserName { get; set; }
+
+
+        //many to one
+        public virtual ICollection<Ad> Ads { get; set; }
     }
 }

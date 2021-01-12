@@ -1,9 +1,7 @@
 ﻿using FindRBeta.Models;
-using FindRBeta.Models.DataBaseInitializer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace FindRBeta.Controllers
@@ -11,7 +9,7 @@ namespace FindRBeta.Controllers
     public class LocationController : Controller
     {
 
-        private DbCtx db = new DbCtx();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         
         // GET: Location

@@ -1,0 +1,27 @@
+﻿@model FindRBeta.Models.Profile
+@{
+    ViewBag.Title = "Your profile";
+}
+
+<h2>@ViewBag.Title</h2>
+
+    <div class="panel panel-default">
+        <div class="panel-body">
+            @Html.Label("FirstName", "First name:")
+            <br />
+            <p>@Model.FirstName</p>
+
+            @Html.Label("LastName", "Last name:")
+            <br />
+            <p>@Model.LastName</p>
+
+            @Html.Label("Age", "Age:")
+            <br />
+            <p>@Model.Age</p>
+
+            @using (Html.BeginForm(actionName: "Details", controllerName: "Profile", method: FormMethod.Get, routeValues: new { id = Model.ProfileId }))
+            {
+                <button style="margin-right:5px; margin-left:5px" class="btn btn-primary col-lg-1" type="submit">More details</button>
+            }
+        </div>
+    </div>

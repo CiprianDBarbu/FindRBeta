@@ -1,10 +1,8 @@
 ﻿using FindRBeta.Models;
-using FindRBeta.Models.DataBaseInitializer;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace FindRBeta.Controllers
@@ -12,7 +10,7 @@ namespace FindRBeta.Controllers
     public class ProfileController : Controller
     {
 
-        private DbCtx db = new DbCtx();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
 
         // GET: Profile
@@ -23,6 +21,27 @@ namespace FindRBeta.Controllers
             ViewBag.Profiles = profiles;
 
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Index2()
+        {
+            var userName = User.Identity.GetUserName();
+
+            List<Profile> profiles = db.Profiles.ToList();
+
+            Profile actualProfile = new Profile();
+
+            foreach (var profile in profiles)
+            {
+                if(profile.AplicationUserName == userName)
+                {
+                    actualProfile = profile;
+                    break;
+                }
+            }
+
+            return View(actualProfile);
         }
 
 
@@ -59,6 +78,7 @@ namespace FindRBeta.Controllers
                 if(ModelState.IsValid && profileRequest.ApplicationUserId == null)
                 {
                     profileRequest.ApplicationUserId = User.Identity.GetUserId();
+                    profileRequest.AplicationUserName = User.Identity.GetUserName();
                     db.Profiles.Add(profileRequest);
                     db.SaveChanges();
                     return RedirectToAction("Index");

@@ -32,5 +32,6 @@ namespace FindRBeta.Models
 
         [NotMapped]
         public IEnumerable<SelectListItem> LocationsList { get; set; }
+
     }
 }

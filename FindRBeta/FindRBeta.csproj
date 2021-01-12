@@ -182,6 +182,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HousingController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
@@ -191,7 +192,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\DataBaseInitializer\DbCtx.cs" />
+    <Compile Include="Models\Ad.cs" />
     <Compile Include="Models\Housing.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Location.cs" />
@@ -272,8 +273,11 @@
     <Content Include="Views\Housing\Details.cshtml" />
     <Content Include="Views\Housing\Edit.cshtml" />
     <Content Include="Views\Housing\New.cshtml" />
+    <Content Include="Views\Profile\Index2.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Ad\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

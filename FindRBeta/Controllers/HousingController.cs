@@ -1,16 +1,14 @@
 ﻿using FindRBeta.Models;
-using FindRBeta.Models.DataBaseInitializer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace FindRBeta.Controllers
 {
     public class HousingController : Controller
     {
-        private DbCtx db = new DbCtx();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Housing
         [HttpGet]
