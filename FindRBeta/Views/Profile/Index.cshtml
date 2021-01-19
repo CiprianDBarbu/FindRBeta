@@ -1,4 +1,4 @@
-﻿
+﻿@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Profiles";
 }
@@ -21,9 +21,12 @@
             <br />
             <p>@profile.Age</p>
 
-            @using (Html.BeginForm(actionName:"Details", controllerName:"Profile", method:FormMethod.Get, routeValues: new { id = profile.ProfileId}))
+            @if (User.Identity.GetUserName() == profile.AplicationUserName)
             {
-                <button style="margin-right:5px; margin-left:5px" class="btn btn-primary col-lg-1" type="submit">More details</button>
+                using (Html.BeginForm(actionName: "Details", controllerName: "Profile", method: FormMethod.Get, routeValues: new { id = profile.ProfileId }))
+                {
+                    <button style="margin-right:5px; margin-left:5px" class="btn btn-primary col-lg-1" type="submit">More details</button>
+                }
             }
         </div>
     </div>

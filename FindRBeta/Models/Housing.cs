@@ -18,10 +18,12 @@ namespace FindRBeta.Models
 
 
         [Required]
+        [RegularExpression(@"^[1-9]\d*$", ErrorMessage = "Este necesar un numar pozitiv!")]
         public int Price { get; set; }
 
 
         [Required]
+        [RegularExpression(@"^[1-9]\d*$", ErrorMessage = "Este necesar un numar pozitiv!")]
         public int NoOfRooms { get; set; }
 
 

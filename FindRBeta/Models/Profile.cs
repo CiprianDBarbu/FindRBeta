@@ -20,14 +20,16 @@ namespace FindRBeta.Models
         public int ProfileId { get; set; }
 
         
-        [MaxLength(20, ErrorMessage="Numele nu poate avea mai mult de 20 de caractere!")]
+        [MinLength(2, ErrorMessage = "Numele trebuie sa aiba mai mult de 2 caractere!"),
+            MaxLength(20, ErrorMessage="Numele nu poate avea mai mult de 20 de caractere!")]
         public string LastName { get; set; }
 
 
-        [MaxLength(50, ErrorMessage = "Prenumele nu poate avea mai mult de 50 de caractere!")]
+        [MinLength(2, ErrorMessage = "Numele trebuie sa aiba mai mult de 2 caractere!"),
+            MaxLength(50, ErrorMessage = "Prenumele nu poate avea mai mult de 50 de caractere!")]
         public string FirstName { get; set; }
         
-
+        [RegularExpression(@"^[1-9]\d*$", ErrorMessage = "Este necesar un numar pozitiv!")]
         public int Age { get; set; }
         
 

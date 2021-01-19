@@ -16,7 +16,7 @@ namespace FindRBeta.Models
 
             bool cond;
 
-            if(year > DateTime.Now.Year)
+            if(year >= DateTime.Now.Year)
             {
                 cond = true;
             }

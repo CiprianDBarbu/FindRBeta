@@ -12,7 +12,7 @@ namespace FindRBeta.Controllers
 
         // GET: Housing
         [HttpGet]
-        [Authorize(Roles = "SuperUser, Admin, Editor")]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Index()
         {
             List<Housing> housings = db.Housings.ToList();
@@ -22,7 +22,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "SuperUser, Admin, Editor")]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Details(int? id)
         {
             if(id.HasValue)
@@ -38,7 +38,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "SuperUser, Admin, Editor")]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult New()
         {
             Housing housing = new Housing
@@ -51,7 +51,7 @@ namespace FindRBeta.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles = "SuperUser, Admin, Editor")]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult New(Housing housingRequest)
         {
             try
@@ -72,7 +72,7 @@ namespace FindRBeta.Controllers
 
 
         [HttpGet]
-        [Authorize(Roles = "SuperUser, Admin, Editor")]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(int? id)
         {
             if(id.HasValue)
@@ -90,7 +90,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpPut]
-        [Authorize(Roles = "SuperUser, Admin, Editor")]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Edit(int id, Housing housingRequest)
         {
             try
@@ -120,7 +120,7 @@ namespace FindRBeta.Controllers
 
 
         [HttpDelete]
-        [Authorize(Roles = "Admin, SuperUser")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             Housing housing = db.Housings.Find(id);

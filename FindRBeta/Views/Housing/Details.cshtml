@@ -42,16 +42,17 @@
     </div>
 </div>
 
-
-@using (Html.BeginForm(actionName: "Edit", controllerName: "Housing", method: FormMethod.Get, routeValues: new { id = Model.HousingId }))
+@if (User.IsInRole("Admin"))
 {
-    <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Update</button>
-}
+    using (Html.BeginForm(actionName: "Edit", controllerName: "Housing", method: FormMethod.Get, routeValues: new { id = Model.HousingId }))
+    {
+        <button style="margin-right:5px" class="btn btn-primary col-lg-1" type="submit">Update</button>
+    }
 
-@using (Html.BeginForm(actionName: "Delete", controllerName: "Housing", method: FormMethod.Post, routeValues: new { id = Model.HousingId }))
-{
-    @Html.HttpMethodOverride(HttpVerbs.Delete)
-    <button class="btn btn-primary col-lg-1" type="submit">Delete</button>
+    using (Html.BeginForm(actionName: "Delete", controllerName: "Housing", method: FormMethod.Post, routeValues: new { id = Model.HousingId }))
+    {
+        @Html.HttpMethodOverride(HttpVerbs.Delete)
+        <button class="btn btn-primary col-lg-1" type="submit">Delete</button>
+    }
 }
-
 <br />

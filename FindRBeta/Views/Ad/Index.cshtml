@@ -1,9 +1,9 @@
-﻿
+﻿@using Microsoft.AspNet.Identity
 @{
     ViewBag.Title = "Postari";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -28,29 +28,35 @@
         <th></th>
     </tr>
 
-@foreach (var ad in ViewBag.Ads) {
-<tr>
-    <td>
-        @ad.Profile.LastName
-    </td>
-    <td>
-        @ad.Housing.Link
-    </td>
-    <td>
-        @ad.HousingYear
-    </td>
-    <td>
-        @ad.HousingMonth
-    </td>
-    <td>
-        @ad.HousingDay
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = ad.AdId }) |
-        @Html.ActionLink("Details", "Details", new { id = ad.AdId }) |
-        @Html.ActionLink("Delete", "Delete", new { id = ad.AdId })
-    </td>
-</tr>
-}
+    @foreach (var ad in ViewBag.Ads)
+    {
+        <tr>
+            <td>
+                @using (Html.BeginForm(actionName: "Details", controllerName: "Profile", method: FormMethod.Get, routeValues: new { id = ad.Profile.ProfileId }))
+                {
+                    <button style="margin-right:5px; margin-left:5px" class="btn btn-primary col-lg-1" type="submit">@ad.Profile.FirstName</button>
+                }
+            </td>
+            <td>
+                @ad.Housing.Link
+            </td>
+            <td>
+                @ad.HousingYear
+            </td>
+            <td>
+                @ad.HousingMonth
+            </td>
+            <td>
+                @ad.HousingDay
+            </td>
+            <td>
+                
+              @Html.ActionLink("Edit", "Edit", new { id = ad.AdId });
+              @Html.ActionLink("Details", "Details", new {id = ad.AdId}); 
+              @Html.ActionLink("Delete", "Delete", new { id = ad.AdId });
+                
+            </td>
+        </tr>
+    }
 
 </table>

@@ -14,7 +14,7 @@ namespace FindRBeta.Controllers
         
         // GET: Location
         [HttpGet]
-        [Authorize(Roles = "SuperUser, Admin, Editor")]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Index()
         {
             List<Location> locations = db.Locations.ToList();
@@ -24,7 +24,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "SuperUser, Admin, Editor")]
+        [Authorize(Roles = "Admin, Editor")]
         public ActionResult Details(int? id)
         {
             if(id.HasValue)
@@ -40,7 +40,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "SuperUser, Admin, Editor")]
+        [Authorize(Roles = "Admin")]
         public ActionResult New()
         {
             Location location = new Location();
@@ -49,7 +49,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "SuperUser, Admin, Editor")]
+        [Authorize(Roles = "Admin")]
         public ActionResult New(Location locationRequest)
         {
             try
@@ -69,7 +69,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "SuperUser, Admin, Editor")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if(id.HasValue)
@@ -86,7 +86,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpPut]
-        [Authorize(Roles = "SuperUser, Admin, Editor")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id, Location locationRequest)
         {
             try
@@ -113,7 +113,7 @@ namespace FindRBeta.Controllers
         }
 
         [HttpDelete]
-        [Authorize(Roles = "Admin, SuperUser")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             Location location = db.Locations.Find(id);
